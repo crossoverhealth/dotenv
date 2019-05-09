@@ -62,7 +62,7 @@ module Dotenv
         # Simply set the DOTENVCRYPT environment variable to the contents of your
         # .env.cryptkey file and files will be automatically decrypted with:
 
-        `openssl aes-256-cbc -d -a -pass env:DOTENVCRYPT -in "#{@filename}"`.chomp
+        `openssl aes-256-cbc -d -a -md md5 -pass env:DOTENVCRYPT -in "#{@filename}"`.chomp
 
       else
         File.read(@filename)
